@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MVPFragment"
+    android:background="#c4b8e1">
+
+    <EditText
+        android:id="@+id/num1_mvp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Enter number 1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <EditText
+        android:id="@+id/num2_mvp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Enter number 2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/num1_mvp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/num1_mvp"
+        app:layout_constraintTop_toBottomOf="@+id/num1_mvp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/result_mvp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Result: "
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_button_mvp"
+        app:layout_constraintEnd_toEndOf="@+id/num2_mvp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/num2_mvp"
+        app:layout_constraintTop_toBottomOf="@+id/num2_mvp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/add_button_mvp"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Add"
+        android:backgroundTint="#8444F3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/num2_mvp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/sub_button_mvp"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Subtract"
+        android:backgroundTint="#7433E6"
+        app:layout_constraintEnd_toEndOf="@+id/add_button_mvp"
+        app:layout_constraintStart_toStartOf="@+id/add_button_mvp"
+        app:layout_constraintTop_toBottomOf="@+id/add_button_mvp" />
+
+    <Button
+        android:id="@+id/mult_button_mvp"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Multiply"
+        android:backgroundTint="#6023CA"
+        app:layout_constraintEnd_toEndOf="@+id/sub_button_mvp"
+        app:layout_constraintStart_toStartOf="@+id/sub_button_mvp"
+        app:layout_constraintTop_toBottomOf="@+id/sub_button_mvp" />
+
+    <Button
+        android:id="@+id/div_button_mvp"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Divide"
+        android:backgroundTint="#5014BA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/mult_button_mvp"
+        app:layout_constraintStart_toStartOf="@+id/mult_button_mvp"
+        app:layout_constraintTop_toBottomOf="@+id/mult_button_mvp"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
