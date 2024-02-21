@@ -1,4 +1,4 @@
-package com.cs4520.assignment3.MVVM
+package com.cs4520.assignment3
 
 class Model {
     var num1 = 0.0

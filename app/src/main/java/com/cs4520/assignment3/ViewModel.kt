@@ -1,15 +1,12 @@
-package com.cs4520.assignment3.MVVM
+package com.cs4520.assignment3
 
-import android.text.TextUtils
-import android.util.Patterns
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
-import com.cs4520.assignment3.BR
 
 
 class ViewModel : BaseObservable() {
     // creating object of Model class
-    private var model: Model? = null
+    private var model: Model = Model()
 
     // string variables for
     // toast messages
@@ -31,22 +28,14 @@ class ViewModel : BaseObservable() {
          notifyPropertyChanged(BR.toastMessage)
     }
 
-    // constructor of ViewModel class
-    //constructor() {
-//
-        // instantiating object of
-        // model class
- //       model = Model(0.0, 0.0)
-  //  }
-
     // getter and setter methods
     // for email variable
     @Bindable
     fun getNum1(): Double? {
-        return model?.getNum1Field()
+        return model.getNum1Field()
     }
     fun setNum1(num: Double) {
-        model?.setNum1Field(num)
+        model.setNum1Field(num)
         notifyPropertyChanged(BR.num1)
     }
 
@@ -54,10 +43,10 @@ class ViewModel : BaseObservable() {
     // for email variable
     @Bindable
     fun getNum2(): Double? {
-        return model?.getNum2Field()
+        return model.getNum2Field()
     }
     fun setNum2(num: Double) {
-        model?.setNum2Field(num)
+        model.setNum2Field(num)
         notifyPropertyChanged(BR.num2)
     }
 

@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_mvp" />
     <fragment
         android:id="@+id/MVVMFragment"
-        android:name="com.cs4520.assignment3.MVVM.MVVMFragment"
+        android:name="com.cs4520.assignment3.MVVMFragment"
         android:label="fragment_mvvm"
         tools:layout="@layout/fragment_mvvm" />
 </navigation>
