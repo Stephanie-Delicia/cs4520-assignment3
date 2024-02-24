@@ -66,7 +66,7 @@ class ViewModel : BaseObservable() {
         if (isValidAddSubtractOrMultiply()) {
             setToastMessage(successMessage)
             model.setResultField(model.num1 + model.num2)
-            Log.i("Pressed add button", "In view model")
+            Log.i("Pressed add button", "Set new result field")
         } else {
             setToastMessage(errorMessage)
         }

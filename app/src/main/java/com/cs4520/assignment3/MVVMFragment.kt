@@ -44,11 +44,14 @@ class MVVMFragment : Fragment() {
         var add = bindingFragment.addButtonMvvm
         Log.i("Is add Button null?", add.toString())
         add.setOnClickListener {
-            Toast.makeText(requireActivity(), "Dawg what is going on admin", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(requireActivity(), "Dawg what is going on admin", Toast.LENGTH_SHORT).show()
             Log.i("Pressed add button", "In fragment")
             var v = bindingFragment.viewModel
             if (v != null) {
+                v.setNum1(bindingFragment.num1Mvvm.text.toString().toDouble())
+                v.setNum2(bindingFragment.num2Mvvm.text.toString().toDouble())
                 v.onAddSubtractOrMultiplyButtonClicked()
+                bindingFragment.resultMvvm.setText(v.getResult().toString())
             } else {Log.i("view model null?", "yup")}
         }
         return bindingFragment.root
