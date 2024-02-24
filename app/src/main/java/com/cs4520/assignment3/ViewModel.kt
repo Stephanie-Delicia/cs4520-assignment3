@@ -1,5 +1,6 @@
 package com.cs4520.assignment3
 
+import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 
@@ -25,7 +26,7 @@ class ViewModel : BaseObservable() {
 
     private fun setToastMessage(toastMessage: String) {
         this.toastMessage = toastMessage
-         notifyPropertyChanged(BR.toastMessage)
+        notifyPropertyChanged(BR.toastMessage)
     }
 
     @Bindable
@@ -36,6 +37,7 @@ class ViewModel : BaseObservable() {
     fun setResultField(res: Double) {
         model.setResultField(res)
         notifyPropertyChanged(BR.result)
+
     }
 
     // getter and setter methods
@@ -61,12 +63,21 @@ class ViewModel : BaseObservable() {
     }
 
     fun onAddSubtractOrMultiplyButtonClicked() {
-        if (isValidAddSubtractOrMultiply())
-            setToastMessage(successMessage) else setToastMessage(errorMessage)
+        if (isValidAddSubtractOrMultiply()) {
+            setToastMessage(successMessage)
+            model.setResultField(model.num1 + model.num2)
+            Log.i("Pressed add button", "In view model")
+        } else {
+            setToastMessage(errorMessage)
+        }
     }
     fun onDivideButtonClicked() {
-        if (isValidDivide())
-            setToastMessage(successMessage) else setToastMessage(errorMessage)
+        if (isValidDivide()) {
+            setToastMessage(successMessage)
+            model.setResultField(model.num1 + model.num2)
+        } else {
+            setToastMessage(errorMessage)
+        }
     }
 
     fun isValidAddSubtractOrMultiply(): Boolean {
