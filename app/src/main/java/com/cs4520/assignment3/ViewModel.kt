@@ -28,6 +28,16 @@ class ViewModel : BaseObservable() {
          notifyPropertyChanged(BR.toastMessage)
     }
 
+    @Bindable
+    fun getResult(): Double {
+        return model.geResultField()
+    }
+
+    fun setResultField(res: Double) {
+        model.setResultField(res)
+        notifyPropertyChanged(BR.result)
+    }
+
     // getter and setter methods
     // for email variable
     @Bindable

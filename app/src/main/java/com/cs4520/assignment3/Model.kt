@@ -3,6 +3,17 @@ package com.cs4520.assignment3
 class Model {
     var num1 = 0.0
     var num2 = 0.0
+    var res = 0.0
+
+    // getter and setter methods
+    // for email variable
+    fun geResultField(): Double {
+        return res
+    }
+
+    fun setResultField(r: Double) {
+        res = r
+    }
 
     // getter and setter methods
     // for email variable
