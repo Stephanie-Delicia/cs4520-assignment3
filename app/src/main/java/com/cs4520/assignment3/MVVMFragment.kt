@@ -1,5 +1,6 @@
 package com.cs4520.assignment3
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,48 +14,49 @@ import com.cs4520.assignment3.databinding.FragmentMvvmBinding
 class MVVMFragment : Fragment() {
     private lateinit var bindingFragment: FragmentMvvmBinding
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        Log.d("onViewCreated", "FragmentMvvmBinding")
-//        var binding = DataBindingUtil.setContentView<FragmentMvvmBinding>(requireActivity(), R.layout.fragment_mvvm)
-//        binding.addButtonMvvm.setOnClickListener {
-//            Toast.makeText(requireActivity(), "Dawg what is going on admin", Toast.LENGTH_SHORT).show()
-//            Log.i("Pressed add button", "In fragment")
-//            var v = bindingFragment.viewModel
-//            if (v != null) {
-//                v.onAddSubtractOrMultiplyButtonClicked()
-//            } else {Log.i("view model null?", "yup")}
-//        }
-//    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         bindingFragment = DataBindingUtil.inflate(inflater, R.layout.fragment_mvvm, container, false)
         bindingFragment.lifecycleOwner = viewLifecycleOwner
-        bindingFragment.setViewModel(ViewModel())
+        bindingFragment.viewModel = ViewModel()
         bindingFragment.executePendingBindings()
-        // bindingFragment = FragmentMvvmBinding.inflate(inflater).also { bindingFragment = it }
         Log.d("onCreateView", "FragmentMvvmBinding")
-        Log.i("Is binding null?", bindingFragment.toString())
-        var add = bindingFragment.addButtonMvvm
-        Log.i("Is add Button null?", add.toString())
+        val add = bindingFragment.addButtonMvvm
+        val sub = bindingFragment.subButtonMvvm
+        val mult = bindingFragment.multButtonMvvm
+        val div = bindingFragment.divButtonMvvm
         add.setOnClickListener {
-            // Toast.makeText(requireActivity(), "Dawg what is going on admin", Toast.LENGTH_SHORT).show()
-            Log.i("Pressed add button", "In fragment")
-            var v = bindingFragment.viewModel
-            if (v != null) {
-                v.setNum1(bindingFragment.num1Mvvm.text.toString().toDouble())
-                v.setNum2(bindingFragment.num2Mvvm.text.toString().toDouble())
-                v.onAddSubtractOrMultiplyButtonClicked()
-                bindingFragment.resultMvvm.setText(v.getResult().toString())
-            } else {Log.i("view model null?", "yup")}
+            onButtonClicked(Operation.ADD)
+        }
+        sub.setOnClickListener {
+            onButtonClicked(Operation.SUBTRACT)
+        }
+        mult.setOnClickListener {
+            onButtonClicked(Operation.MULTIPLY)
+        }
+        div.setOnClickListener {
+            onButtonClicked(Operation.DIVIDE)
         }
         return bindingFragment.root
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun onButtonClicked(op: Operation) {
+        Log.i("Button clicked.", "In MVVM fragment.")
+        val v = bindingFragment.viewModel
+        v.setNum1(bindingFragment.num1Mvvm.text.toString().toDouble())
+        v.setNum2(bindingFragment.num2Mvvm.text.toString().toDouble())
+        if (v != null) {
+            v.onOperationButtonClicked(op)
+            bindingFragment.resultMvvm.text = "@string/result" + v.getResult().toString()
+        } else {
+            Log.i("Null button.", "In fragment.")
+        }
     }
 }
 

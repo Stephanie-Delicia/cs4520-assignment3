@@ -1,6 +1,5 @@
 package com.cs4520.assignment3
 
-import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 
@@ -43,7 +42,7 @@ class ViewModel : BaseObservable() {
     // getter and setter methods
     // for email variable
     @Bindable
-    fun getNum1(): Double? {
+    fun getNum1(): Double {
         return model.getNum1Field()
     }
     fun setNum1(num: Double) {
@@ -62,22 +61,27 @@ class ViewModel : BaseObservable() {
         notifyPropertyChanged(BR.num2)
     }
 
-    fun onAddSubtractOrMultiplyButtonClicked() {
-        if (isValidAddSubtractOrMultiply()) {
-            setToastMessage(successMessage)
-            model.setResultField(model.num1 + model.num2)
-            Log.i("Pressed add button", "Set new result field")
-        } else {
-            setToastMessage(errorMessage)
+    fun onOperationButtonClicked(op : Operation) {
+        if (op == Operation.ADD ||
+            op == Operation.SUBTRACT ||
+            op == Operation.MULTIPLY) {
+            if (isValidAddSubtractOrMultiply()) {
+                setToastMessage(successMessage)
+                var result = performOperation(op, model.num1, model.num2)
+                model.setResultField(result)
+            } else {
+                setToastMessage(errorMessage)
+            }
+        } else if (op == Operation.DIVIDE) { // is the divide operation
+            if (isValidDivide()) {
+                var result = performOperation(op, model.num1, model.num2)
+                model.setResultField(result)
+                setToastMessage(successMessage)
+            } else {
+                setToastMessage(errorMessage)
+            }
         }
-    }
-    fun onDivideButtonClicked() {
-        if (isValidDivide()) {
-            setToastMessage(successMessage)
-            model.setResultField(model.num1 + model.num2)
-        } else {
-            setToastMessage(errorMessage)
-        }
+
     }
 
     fun isValidAddSubtractOrMultiply(): Boolean {
@@ -87,4 +91,22 @@ class ViewModel : BaseObservable() {
         return (getNum1() != null) and (getNum2() != null) and (getNum2() != 0.0)
     }
 
+}
+
+enum class Operation {
+    ADD, SUBTRACT, MULTIPLY, DIVIDE
+}
+public fun performOperation(op : Operation, num1 : Double, num2 : Double) : Double {
+    if (op == Operation.ADD) {
+        return num1 + num2
+    }
+    else if (op == Operation.SUBTRACT) {
+        return num1 + num2
+    }
+    else if (op == Operation.MULTIPLY) {
+        return num1 * num2
+    }
+    else {
+        return num1 / num2
+    }
 }
