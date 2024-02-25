@@ -57,7 +57,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/num2_mvvm"
             app:layout_constraintTop_toBottomOf="@+id/num2_mvvm"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            bind:toastMessage="@{viewModel.toastMessage}"/>
         <Button
             android:id="@+id/add_button_mvvm"
             android:layout_width="125dp"
@@ -71,8 +72,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/num2_mvvm"
             app:layout_constraintVertical_bias="0.0"
-            android:onClick="@{()-> viewModel.onAddClicked()}"
-            bind:toastMessage="@{viewModel.toastMessage}"/>
+            android:onClick="@{()-> viewModel.onAddClicked()}"/>
         <Button
             android:id="@+id/sub_button_mvvm"
             android:layout_width="125dp"
@@ -82,8 +82,7 @@
             app:layout_constraintEnd_toEndOf="@+id/add_button_mvvm"
             app:layout_constraintStart_toStartOf="@+id/add_button_mvvm"
             app:layout_constraintTop_toBottomOf="@+id/add_button_mvvm"
-            android:onClick="@{()-> viewModel.onSubtractClicked()}"
-            bind:toastMessage="@{viewModel.toastMessage}"/>
+            android:onClick="@{()-> viewModel.onSubtractClicked()}"/>
         <Button
             android:id="@+id/mult_button_mvvm"
             android:layout_width="125dp"
@@ -93,8 +92,7 @@
             app:layout_constraintEnd_toEndOf="@+id/sub_button_mvvm"
             app:layout_constraintStart_toStartOf="@+id/sub_button_mvvm"
             app:layout_constraintTop_toBottomOf="@+id/sub_button_mvvm"
-            android:onClick="@{()-> viewModel.onMultiplyClicked()}"
-            bind:toastMessage="@{viewModel.toastMessage}"/>
+            android:onClick="@{()-> viewModel.onMultiplyClicked()}"/>
         <Button
             android:id="@+id/div_button_mvvm"
             android:layout_width="125dp"
@@ -106,7 +104,6 @@
             app:layout_constraintStart_toStartOf="@+id/mult_button_mvvm"
             app:layout_constraintTop_toBottomOf="@+id/mult_button_mvvm"
             app:layout_constraintVertical_bias="0.0"
-            android:onClick="@{()-> viewModel.onDivideClicked()}"
-            bind:toastMessage="@{viewModel.toastMessage}" />
+            android:onClick="@{()-> viewModel.onDivideClicked()}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

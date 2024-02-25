@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 
-
 class ViewModel : BaseObservable() {
     // creating object of Model class
     private var model: Model = Model()
