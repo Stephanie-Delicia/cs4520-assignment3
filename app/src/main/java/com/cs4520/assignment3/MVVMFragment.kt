@@ -1,6 +1,5 @@
 package com.cs4520.assignment3
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,33 +29,76 @@ class MVVMFragment : Fragment() {
         val sub = bindingFragment.subButtonMvvm
         val mult = bindingFragment.multButtonMvvm
         val div = bindingFragment.divButtonMvvm
-        add.setOnClickListener {
-            onButtonClicked(Operation.ADD)
-        }
-        sub.setOnClickListener {
-            onButtonClicked(Operation.SUBTRACT)
-        }
-        mult.setOnClickListener {
-            onButtonClicked(Operation.MULTIPLY)
-        }
-        div.setOnClickListener {
-            onButtonClicked(Operation.DIVIDE)
-        }
-        return bindingFragment.root
-    }
 
-    @SuppressLint("SetTextI18n")
-    fun onButtonClicked(op: Operation) {
-        Log.i("Button clicked.", "In MVVM fragment.")
         val v = bindingFragment.viewModel
-        v.setNum1(bindingFragment.num1Mvvm.text.toString().toDouble())
-        v.setNum2(bindingFragment.num2Mvvm.text.toString().toDouble())
+
         if (v != null) {
-            v.onOperationButtonClicked(op)
-            bindingFragment.resultMvvm.text = "@string/result" + v.getResult().toString()
-        } else {
-            Log.i("Null button.", "In fragment.")
-        }
+            add.setOnClickListener {
+                v.setNum1(bindingFragment.num1Mvvm.text.toString())
+                v.setNum2(bindingFragment.num2Mvvm.text.toString())
+                v.onAddClicked()
+                val result = v.getResult().toString()
+                if (result == "null") {
+                   // bindingFragment.resultMvvm.text = "Result:"
+                } else {
+                    bindingFragment.resultMvvm.text = "Result:" + " " + result
+                }
+                //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
+                v.setNum1(null)
+                v.setNum2(null)
+                bindingFragment.num1Mvvm.setText("")
+                bindingFragment.num2Mvvm.setText("")
+            }
+            sub.setOnClickListener {
+                v.setNum1(bindingFragment.num1Mvvm.text.toString())
+                v.setNum2(bindingFragment.num2Mvvm.text.toString())
+                v.onSubtractClicked()
+                val result = v.getResult().toString()
+                if (result == "null") {
+                    // bindingFragment.resultMvvm.text = "Result:"
+                } else {
+                    bindingFragment.resultMvvm.text = "Result:" + " " + result
+                }
+                //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
+                v.setNum1(null)
+                v.setNum2(null)
+                bindingFragment.num1Mvvm.setText("")
+                bindingFragment.num2Mvvm.setText("")
+            }
+            mult.setOnClickListener {
+                v.setNum1(bindingFragment.num1Mvvm.text.toString())
+                v.setNum2(bindingFragment.num2Mvvm.text.toString())
+                v.onMultiplyClicked()
+                val result = v.getResult().toString()
+                if (result == "null") {
+                   //  bindingFragment.resultMvvm.text = "Result:"
+                } else {
+                    bindingFragment.resultMvvm.text = "Result:" + " " + result
+                }
+                //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
+                v.setNum1(null)
+                v.setNum2(null)
+                bindingFragment.num1Mvvm.setText("")
+                bindingFragment.num2Mvvm.setText("")
+            }
+            div.setOnClickListener {
+                v.setNum1(bindingFragment.num1Mvvm.text.toString())
+                v.setNum2(bindingFragment.num2Mvvm.text.toString())
+                v.onDivideClicked()
+                val result = v.getResult().toString()
+                if (result == "null") {
+                  //  bindingFragment.resultMvvm.text = "Result:"
+                } else {
+                    bindingFragment.resultMvvm.text = "Result:" + " " + result
+                }
+                //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
+                v.setNum1(null)
+                v.setNum2(null)
+                bindingFragment.num1Mvvm.setText("")
+                bindingFragment.num2Mvvm.setText("")
+            }
+        } else {}
+        return bindingFragment.root
     }
 }
 
@@ -65,6 +107,7 @@ class MVVMFragment : Fragment() {
 // invokes this method
 @BindingAdapter("toastMessage")
 fun runMe(view: View, message: String?) {
+    Log.i("toastMessage", "Fragment")
     if (message != null) Toast
         .makeText(
             view.context, message,
