@@ -36,7 +36,6 @@ class ViewModel : BaseObservable() {
 
     fun setResultField(res: Double?) {
         model.setResultField(res)
-        // notifyPropertyChanged(BR.result)
     }
 
     @Bindable
@@ -48,7 +47,6 @@ class ViewModel : BaseObservable() {
             if (num != null) {
                 model.setNum1Field(num.toDouble())
             }
-            // notifyPropertyChanged(BR.num1)
         } else { model.setNum1Field(null)}
     }
 
@@ -61,7 +59,6 @@ class ViewModel : BaseObservable() {
             if (num != null) {
                 model.setNum2Field(num.toDouble())
             }
-            // notifyPropertyChanged(BR.num2)
         } else { model.setNum2Field(null)}
     }
 
