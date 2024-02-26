@@ -1,6 +1,6 @@
 package com.cs4520.assignment3
 
-class Model {
+class MVVMModel {
     var num1 : Double? = null
     var num2 : Double? = null
     var res : Double? = null

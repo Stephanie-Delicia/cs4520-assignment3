@@ -1,4 +1,4 @@
-package com.cs4520.assignment3.MVP
+package com.cs4520.assignment3
 
 import android.os.Bundle
 import android.view.LayoutInflater

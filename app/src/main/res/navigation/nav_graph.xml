@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/MVPFragment"
-        android:name="com.cs4520.assignment3.MVP.MVPFragment"
+        android:name="com.cs4520.assignment3.MVPFragment"
         android:label="fragment_mvp"
         tools:layout="@layout/fragment_mvp" />
     <fragment

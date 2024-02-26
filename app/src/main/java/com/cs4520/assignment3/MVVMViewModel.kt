@@ -6,7 +6,7 @@ import androidx.databinding.Bindable
 
 class ViewModel : BaseObservable() {
     // creating object of Model class
-    private var model: Model = Model()
+    private var model: MVVMModel = MVVMModel()
 
     // string variables for
     // toast messages
@@ -39,8 +39,6 @@ class ViewModel : BaseObservable() {
         // notifyPropertyChanged(BR.result)
     }
 
-    // getter and setter methods
-    // for email variable
     @Bindable
     fun getNum1(): Double? {
         return model.getNum1Field()
@@ -54,8 +52,6 @@ class ViewModel : BaseObservable() {
         } else { model.setNum1Field(null)}
     }
 
-    // getter and setter methods
-    // for email variable
     @Bindable
     fun getNum2(): Double? {
         return model.getNum2Field()
