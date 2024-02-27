@@ -16,7 +16,7 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
     private val binding get() = _binding!!
 
     // creating object of Presenter interface in Contract
-    var presenter: MVPPresenter? = null
+    private var presenter: MVPPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_mvp, container, false)
         // instantiating object of Presenter Interface
@@ -39,7 +39,7 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
         var res: Double? = null
 
             addButton.setOnClickListener {
-                if (binding.num1Mvp.text.toString() != "" || binding.num2Mvp.text.toString() != "") {
+                if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
                     res = presenter!!.onAddButtonClick(
                         binding.num1Mvp.text.toString().toDouble(),
                         binding.num2Mvp.text.toString().toDouble()
@@ -51,7 +51,7 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
             }
 
             subButton.setOnClickListener {
-                if (binding.num1Mvp.text.toString() != "" || binding.num2Mvp.text.toString() != "") {
+                if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
                     res = presenter!!.onSubtractButtonClick(
                         binding.num1Mvp.text.toString().toDouble(),
                         binding.num2Mvp.text.toString().toDouble()
@@ -63,19 +63,23 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
             }
 
             multButton.setOnClickListener {
-                if (binding.num1Mvp.text.toString() != "" || binding.num2Mvp.text.toString() != "") {
+                if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
                     res = presenter!!.onMultiplyButtonClick(
                         binding.num1Mvp.text.toString().toDouble(),
                         binding.num2Mvp.text.toString().toDouble()
                     )
-                    Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
+                    if (res == null) {
+                        Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
                 }
             }
 
             divButton.setOnClickListener {
-                if (binding.num1Mvp.text.toString() != "" || binding.num2Mvp.text.toString() != "") {
+                if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
                     res = presenter!!.onDivideButtonClick(
                         binding.num1Mvp.text.toString().toDouble(),
                         binding.num2Mvp.text.toString().toDouble()
