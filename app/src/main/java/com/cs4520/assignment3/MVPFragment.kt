@@ -38,57 +38,58 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
         val divButton = binding.divButtonMvp
         var res: Double? = null
 
-            addButton.setOnClickListener {
-                if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
-                    res = presenter!!.onAddButtonClick(
-                        binding.num1Mvp.text.toString().toDouble(),
-                        binding.num2Mvp.text.toString().toDouble()
-                    )
-                    Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
-                }
+        addButton.setOnClickListener {
+            if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
+                res = presenter!!.onAddButtonClick(
+                    binding.num1Mvp.text.toString().toDouble(),
+                    binding.num2Mvp.text.toString().toDouble()
+                )
+                Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
             }
+        }
 
-            subButton.setOnClickListener {
-                if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
-                    res = presenter!!.onSubtractButtonClick(
-                        binding.num1Mvp.text.toString().toDouble(),
-                        binding.num2Mvp.text.toString().toDouble()
-                    )
-                    Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
-                }
+        subButton.setOnClickListener {
+            if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
+                res = presenter!!.onSubtractButtonClick(
+                    binding.num1Mvp.text.toString().toDouble(),
+                    binding.num2Mvp.text.toString().toDouble()
+                )
+                Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
             }
+        }
 
-            multButton.setOnClickListener {
-                if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
-                    res = presenter!!.onMultiplyButtonClick(
-                        binding.num1Mvp.text.toString().toDouble(),
-                        binding.num2Mvp.text.toString().toDouble()
-                    )
-                    if (res == null) {
-                        Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
-                }
+        multButton.setOnClickListener {
+            if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
+                res = presenter!!.onMultiplyButtonClick(
+                    binding.num1Mvp.text.toString().toDouble(),
+                    binding.num2Mvp.text.toString().toDouble()
+                )
+                Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
             }
+        }
 
-            divButton.setOnClickListener {
-                if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
-                    res = presenter!!.onDivideButtonClick(
-                        binding.num1Mvp.text.toString().toDouble(),
-                        binding.num2Mvp.text.toString().toDouble()
-                    )
-                    Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
-                } else {
+        divButton.setOnClickListener {
+            if (binding.num1Mvp.text.toString() != "" && binding.num2Mvp.text.toString() != "") {
+                res = presenter!!.onDivideButtonClick(
+                    binding.num1Mvp.text.toString().toDouble(),
+                    binding.num2Mvp.text.toString().toDouble()
+                )
+                if (res == null) {
                     Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
                 }
+            } else {
+                Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
             }
+                ///
+        }
 
         return view
     }
