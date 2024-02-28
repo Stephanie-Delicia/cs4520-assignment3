@@ -39,11 +39,9 @@ class MVVMFragment : Fragment() {
                 v.onAddClicked()
                 val result = v.getResult().toString()
                 if (result == "null") {
-                   // bindingFragment.resultMvvm.text = "Result:"
                 } else {
                     bindingFragment.resultMvvm.text = "Result:" + " " + result
                 }
-                //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
                 v.setNum1(null)
                 v.setNum2(null)
                 bindingFragment.num1Mvvm.setText("")
@@ -55,7 +53,6 @@ class MVVMFragment : Fragment() {
                 v.onSubtractClicked()
                 val result = v.getResult().toString()
                 if (result == "null") {
-                    // bindingFragment.resultMvvm.text = "Result:"
                 } else {
                     bindingFragment.resultMvvm.text = "Result:" + " " + result
                 }

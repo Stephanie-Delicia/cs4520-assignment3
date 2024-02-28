@@ -7,7 +7,7 @@ class MVPPresenter (private var mainView: FragmentMvpBinding,
     override fun onAddButtonClick(num1: Double?, num2: Double?): Double? {
         if (isValidAddSubtractOrMultiply(num1, num2)) {
             val res = num1!! + num2!!
-            mainView.resultMvp.text = "Result: " + res.toString() // set result
+            mainView.resultMvp.text = "Result: $res" // set result
             model.setResult(res)
             mainView.num1Mvp.text.clear()
             mainView.num2Mvp.text.clear()
@@ -22,7 +22,7 @@ class MVPPresenter (private var mainView: FragmentMvpBinding,
     override fun onSubtractButtonClick(num1: Double?, num2: Double?): Double? {
         if (isValidAddSubtractOrMultiply(num1, num2)) {
             val res = num1!! - num2!!
-            mainView.resultMvp.text = "Result: " + res.toString() // set result
+            mainView.resultMvp.text = "Result: $res" // set result
             model.setResult(res)
             mainView.num1Mvp.text.clear()
             mainView.num2Mvp.text.clear()
@@ -37,7 +37,7 @@ class MVPPresenter (private var mainView: FragmentMvpBinding,
     override fun onMultiplyButtonClick(num1: Double?, num2: Double?): Double? {
         if (isValidAddSubtractOrMultiply(num1, num2)) {
             val res = num1!! * num2!!
-            mainView.resultMvp.text = "Result: " + res.toString() // set result
+            mainView.resultMvp.text = "Result: $res" // set result
             model.setResult(res)
             mainView.num1Mvp.text.clear()
             mainView.num2Mvp.text.clear()
@@ -52,7 +52,7 @@ class MVPPresenter (private var mainView: FragmentMvpBinding,
     override fun onDivideButtonClick(num1: Double?, num2: Double?): Double? {
         if (isValidDivide(num1, num2)) {
             val res = num1!! / num2!!
-            mainView.resultMvp.text = "Result: " + res.toString() // set result
+            mainView.resultMvp.text = "Result: $res" // set result
             model.setResult(res)
             mainView.num1Mvp.text.clear()
             mainView.num2Mvp.text.clear()

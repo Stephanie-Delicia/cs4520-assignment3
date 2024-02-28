@@ -5,7 +5,7 @@
     <!-- binding object of ViewModel to the XML layout -->
     <data>
         <import type="android.view.View"/>
-        
+
         <variable
             name="viewModel"
             type="com.cs4520.assignment3.ViewModel" />
@@ -30,7 +30,8 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.046" />
+            app:layout_constraintVertical_bias="0.046"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/num2_mvvm"
@@ -43,7 +44,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/num1_mvvm"
             app:layout_constraintTop_toBottomOf="@+id/num1_mvvm"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/result_mvvm"
@@ -65,8 +67,9 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            android:backgroundTint="#F3576E"
+            android:backgroundTint="#DA1633"
             android:onClick="@{()-> viewModel.onAddClicked()}"
+            android:textColor="@color/white"
             android:text="@string/add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +82,8 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:text="@string/subtract"
-            android:backgroundTint="#EC4860"
+            android:backgroundTint="#DA1633"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/add_button_mvvm"
             app:layout_constraintStart_toStartOf="@+id/add_button_mvvm"
             app:layout_constraintTop_toBottomOf="@+id/add_button_mvvm"
@@ -89,7 +93,8 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:text="@string/multiply"
-            android:backgroundTint="#DE334C"
+            android:backgroundTint="#DA1633"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/sub_button_mvvm"
             app:layout_constraintStart_toStartOf="@+id/sub_button_mvvm"
             app:layout_constraintTop_toBottomOf="@+id/sub_button_mvvm"
@@ -99,7 +104,8 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:text="@string/divide"
-            android:backgroundTint="#C01A32"
+            android:backgroundTint="#DA1633"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/mult_button_mvvm"
             app:layout_constraintStart_toStartOf="@+id/mult_button_mvvm"

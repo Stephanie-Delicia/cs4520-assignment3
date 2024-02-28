@@ -101,7 +101,6 @@ class ViewModel : BaseObservable() {
             setToastMessage(errorMessage)
         }
     }
-
     fun isValidAddSubtractOrMultiply(): Boolean {
         return (getNum1() != null) and (getNum2() != null)
     }
