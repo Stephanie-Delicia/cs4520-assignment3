@@ -31,6 +31,12 @@ class MVVMFragment : Fragment() {
         val div = bindingFragment.divButtonMvvm
 
         val v = bindingFragment.viewModel
+        if (savedInstanceState != null)
+        {
+            var result = savedInstanceState.getString("result", "")
+            bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
+            // v!!.setResultField(result.toDouble())
+        }
 
         if (v != null) {
             add.setOnClickListener {
@@ -40,7 +46,7 @@ class MVVMFragment : Fragment() {
                 val result = v.getResult().toString()
                 if (result == "null") {
                 } else {
-                    bindingFragment.resultMvvm.text = "Result:" + " " + result
+                    bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
                 }
                 v.setNum1(null)
                 v.setNum2(null)
@@ -54,7 +60,7 @@ class MVVMFragment : Fragment() {
                 val result = v.getResult().toString()
                 if (result == "null") {
                 } else {
-                    bindingFragment.resultMvvm.text = "Result:" + " " + result
+                    bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
                 }
                 //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
                 v.setNum1(null)
@@ -68,9 +74,8 @@ class MVVMFragment : Fragment() {
                 v.onMultiplyClicked()
                 val result = v.getResult().toString()
                 if (result == "null") {
-                   //  bindingFragment.resultMvvm.text = "Result:"
                 } else {
-                    bindingFragment.resultMvvm.text = "Result:" + " " + result
+                    bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
                 }
                 //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
                 v.setNum1(null)
@@ -86,7 +91,7 @@ class MVVMFragment : Fragment() {
                 if (result == "null") {
                   //  bindingFragment.resultMvvm.text = "Result:"
                 } else {
-                    bindingFragment.resultMvvm.text = "Result:" + " " + result
+                    bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
                 }
                 //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
                 v.setNum1(null)
@@ -96,6 +101,14 @@ class MVVMFragment : Fragment() {
             }
         } else {}
         return bindingFragment.root
+    }
+
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        savedInstanceState.putString("result", bindingFragment.resultMvvm.text.toString());
+        super.onSaveInstanceState(savedInstanceState)
     }
 }
 
