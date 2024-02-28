@@ -51,6 +51,8 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
                 Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
+                binding.num1Mvp.setText("")
+                binding.num2Mvp.setText("")
             }
         }
 
@@ -63,6 +65,8 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
                 Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
+                binding.num1Mvp.setText("")
+                binding.num2Mvp.setText("")
             }
         }
 
@@ -75,6 +79,8 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
                 Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
+                binding.num1Mvp.setText("")
+                binding.num2Mvp.setText("")
             }
         }
 
@@ -86,15 +92,18 @@ class MVPFragment : Fragment(), MVPContract.Contract.View {
                 )
                 if (res == null) {
                     Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
+                    binding.num1Mvp.setText("")
+                    binding.num2Mvp.setText("")
                 } else {
                     Toast.makeText(requireActivity(), "Successful operation.", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(requireActivity(), "Invalid operation.", Toast.LENGTH_SHORT).show()
+                binding.num1Mvp.setText("")
+                binding.num2Mvp.setText("")
             }
-                ///
-        }
 
+        }
         return view
     }
 

@@ -45,6 +45,7 @@ class MVVMFragment : Fragment() {
                 v.onAddClicked()
                 val result = v.getResult().toString()
                 if (result == "null") {
+
                 } else {
                     bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
                 }
