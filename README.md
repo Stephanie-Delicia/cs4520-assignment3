@@ -3,6 +3,7 @@
 #### Running the app
 
 As with the last assignment, downloading and running the app on an Android 14 device (API 34) worked on my end. 
+Video included of using the app called assignment3_demo.mov.
 
 #### Added files for the app
 
