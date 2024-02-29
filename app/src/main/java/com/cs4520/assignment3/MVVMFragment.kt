@@ -33,9 +33,9 @@ class MVVMFragment : Fragment() {
         val v = bindingFragment.viewModel
         if (savedInstanceState != null)
         {
-            var result = savedInstanceState.getString("result", "")
-            bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
-            // v!!.setResultField(result.toDouble())
+            val result = savedInstanceState.getString("result", "")
+            val s = getString(R.string.result) + " " + result
+            bindingFragment.resultMvvm.text = s
         }
 
         if (v != null) {
@@ -44,10 +44,9 @@ class MVVMFragment : Fragment() {
                 v.setNum2(bindingFragment.num2Mvvm.text.toString())
                 v.onAddClicked()
                 val result = v.getResult().toString()
-                if (result == "null") {
-
-                } else {
-                    bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
+                if (result != "null") {
+                    val s = getString(R.string.result) + " " + result
+                    bindingFragment.resultMvvm.text = s
                 }
                 v.setNum1(null)
                 v.setNum2(null)
@@ -59,9 +58,9 @@ class MVVMFragment : Fragment() {
                 v.setNum2(bindingFragment.num2Mvvm.text.toString())
                 v.onSubtractClicked()
                 val result = v.getResult().toString()
-                if (result == "null") {
-                } else {
-                    bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
+                if (result != "null") {
+                    val s = getString(R.string.result) + " " + result
+                    bindingFragment.resultMvvm.text = s
                 }
                 //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
                 v.setNum1(null)
@@ -74,9 +73,9 @@ class MVVMFragment : Fragment() {
                 v.setNum2(bindingFragment.num2Mvvm.text.toString())
                 v.onMultiplyClicked()
                 val result = v.getResult().toString()
-                if (result == "null") {
-                } else {
-                    bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
+                if (result != "null") {
+                    val s = getString(R.string.result) + " " + result
+                    bindingFragment.resultMvvm.text = s
                 }
                 //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
                 v.setNum1(null)
@@ -89,10 +88,9 @@ class MVVMFragment : Fragment() {
                 v.setNum2(bindingFragment.num2Mvvm.text.toString())
                 v.onDivideClicked()
                 val result = v.getResult().toString()
-                if (result == "null") {
-                  //  bindingFragment.resultMvvm.text = "Result:"
-                } else {
-                    bindingFragment.resultMvvm.text = getString(R.string.result) + " " + result
+                if (result != "null") {
+                    val s = getString(R.string.result) + " " + result
+                    bindingFragment.resultMvvm.text = s
                 }
                 //Toast.makeText(requireActivity(), v.getToastMessage(), Toast.LENGTH_SHORT).show()
                 v.setNum1(null)
@@ -100,7 +98,7 @@ class MVVMFragment : Fragment() {
                 bindingFragment.num1Mvvm.setText("")
                 bindingFragment.num2Mvvm.setText("")
             }
-        } else {}
+        }
         return bindingFragment.root
     }
 
@@ -108,7 +106,7 @@ class MVVMFragment : Fragment() {
         // Save UI state changes to the savedInstanceState.
         // This bundle will be passed to onCreate if the process is
         // killed and restarted.
-        savedInstanceState.putString("result", bindingFragment.resultMvvm.text.toString());
+        savedInstanceState.putString("result", bindingFragment.resultMvvm.text.toString())
         super.onSaveInstanceState(savedInstanceState)
     }
 }

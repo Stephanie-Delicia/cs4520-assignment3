@@ -2,8 +2,7 @@ package com.cs4520.assignment3
 
 class MVPContract {
     interface Contract {
-        interface View {
-        }
+        interface View
 
         interface Model {
             fun setResult(num : Double?)

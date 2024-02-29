@@ -20,8 +20,8 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val navHostFragmentController = requireActivity().supportFragmentManager
             .findFragmentById(R.id.navFragment)?.findNavController()
-        var mvpBtn = view.findViewById<Button>(R.id.mvp_button)
-        var mvvmBtn = view.findViewById<Button>(R.id.mvvm_button)
+        val mvpBtn = view.findViewById<Button>(R.id.mvp_button)
+        val mvvmBtn = view.findViewById<Button>(R.id.mvvm_button)
         mvpBtn.setOnClickListener{
             navHostFragmentController?.navigate(R.id.action_homeFragment_to_MVPFragment)
         }

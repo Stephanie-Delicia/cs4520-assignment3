@@ -34,7 +34,7 @@ class ViewModel : BaseObservable() {
         return model.geResultField()
     }
 
-    fun setResultField(res: Double?) {
+    private fun setResultField(res: Double?) {
         model.setResultField(res)
     }
 
@@ -65,8 +65,8 @@ class ViewModel : BaseObservable() {
     fun onAddClicked() {
         if (isValidAddSubtractOrMultiply()) {
             setToastMessage(successMessage)
-            var result = performOperation(Operation.ADD, model.num1, model.num2)
-            model.setResultField(result)
+            val result = performOperation(Operation.ADD, getNum1(), getNum2())
+            setResultField(result)
         } else {
             setToastMessage(errorMessage)
         }
@@ -75,8 +75,8 @@ class ViewModel : BaseObservable() {
     fun onSubtractClicked() {
         if (isValidAddSubtractOrMultiply()) {
             setToastMessage(successMessage)
-            var result = performOperation(Operation.SUBTRACT, model.num1, model.num2)
-            model.setResultField(result)
+            val result = performOperation(Operation.SUBTRACT, getNum1(), getNum2())
+            setResultField(result)
         } else {
             setToastMessage(errorMessage)
         }
@@ -85,8 +85,8 @@ class ViewModel : BaseObservable() {
     fun onMultiplyClicked() {
         if (isValidAddSubtractOrMultiply()) {
             setToastMessage(successMessage)
-            var result = performOperation(Operation.MULTIPLY, model.num1, model.num2)
-            model.setResultField(result)
+            val result = performOperation(Operation.MULTIPLY, getNum1(), getNum2())
+            setResultField(result)
         } else {
             setToastMessage(errorMessage)
         }
@@ -95,16 +95,16 @@ class ViewModel : BaseObservable() {
     fun onDivideClicked() {
         if (isValidDivide()) {
             setToastMessage(successMessage)
-            var result = performOperation(Operation.DIVIDE, model.num1, model.num2)
-            model.setResultField(result)
+            val result = performOperation(Operation.DIVIDE, getNum1(), getNum2())
+            setResultField(result)
         } else {
             setToastMessage(errorMessage)
         }
     }
-    fun isValidAddSubtractOrMultiply(): Boolean {
+    private fun isValidAddSubtractOrMultiply(): Boolean {
         return (getNum1() != null) and (getNum2() != null)
     }
-    fun isValidDivide(): Boolean {
+    private fun isValidDivide(): Boolean {
         return (getNum1() != null) and (getNum2() != null) and (getNum2() != 0.0)
     }
 }
@@ -112,19 +112,23 @@ class ViewModel : BaseObservable() {
 enum class Operation {
     ADD, SUBTRACT, MULTIPLY, DIVIDE
 }
-public fun performOperation(op : Operation, num1 : Double?, num2 : Double?) : Double? {
-    if ((num1 != null) and (num2 != null)) {
-        if (op == Operation.ADD) {
-            return num1!! + num2!!
+fun performOperation(op : Operation, num1 : Double?, num2 : Double?) : Double? {
+    return if ((num1 != null) and (num2 != null)) {
+        when (op) {
+            Operation.ADD -> {
+                num1!! + num2!!
+            }
+            Operation.SUBTRACT -> {
+                num1!! - num2!!
+            }
+            Operation.MULTIPLY -> {
+                num1!! * num2!!
+            }
+            else -> {
+                num1!! / num2!!
+            }
         }
-        else if (op == Operation.SUBTRACT) {
-            return num1!! - num2!!
-        }
-        else if (op == Operation.MULTIPLY) {
-            return num1!! * num2!!
-        }
-        else {
-            return num1!! / num2!!
-        }
-    } else {return null}
+    } else {
+        null
+    }
 }
